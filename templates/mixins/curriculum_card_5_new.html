@@ -1,0 +1,19 @@
+<div class="w-full sm:w-1/5 mb-10 px-4">
+    <a href="{% url 'curriculums:detail' new.pk %}">
+        <div class="w-auto h-auto bg-cover bg-center mb-4 ">
+            <img src="{{ new.cover_photo }}">
+        </div>
+        <div class="text-center">
+            <div class="inline-block text-sm lg:text-sm text-gray-500 mb-4 sm:mb-8 border-b-2">
+                {{ new.category }}
+            </div>
+        </div>
+
+        <div class="text-lg md:text-2xl lg:text-xl font-bold mb-2 text-center">
+            {{ new.title }}
+        </div>
+        <div class="text-sm md:text-base font-normal text-gray-600 mb-4 text-center">
+            {{ new.sub_title }}
+        </div>
+    </a>
+</div>

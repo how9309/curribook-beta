@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load social_share %}
+
+{% block page_title %}
+    {{ curriculum.title }}
+{% endblock page_title %}
+
+{% block content %}
+    <div class="container mx-auto flex-col justify-center px-4 md:px-10 lg:px-72">
+        <div class="w-full">
+            <div class="flex text-center justify-center pt-16">
+                <div class="mt-12">
+                    <div class="sub text-gray-600 text font-bold mb-1">{{ curriculum.sub_title }}</div>
+                    <h3 class="text-black text-2xl font-bold mb-3">{{ curriculum.title }}</h3>
+
+                </div>
+            </div>
+            <div class="mt-14 mb-8">
+                {{ curriculum.description | safe }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

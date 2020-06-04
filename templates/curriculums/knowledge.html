@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    커리북 | 지식
+{% endblock page_title %}
+
+{% block content %}
+    <div class="px-5">
+        <div class="container mx-auto lg:max-w-full pb-6 mt-24 text-center">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">지</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">식</span>
+        </div>
+        <div class="border-b border-black -mx-5
+        ">
+        </div>
+        <div class="container mx-auto lg:max-w-full mt-10">
+            <div class="flex flex-wrap">
+                {% for knowledge in knowledges %}
+                    {% include 'mixins/curriculum_card_5_knowledge.html' with knowledge=knowledge %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

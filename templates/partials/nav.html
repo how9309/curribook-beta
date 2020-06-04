@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    커리북 | 내게 맞는 책, 지금 필요한 독서
+{% endblock page_title %}
+
+{% block content %}
+    <div class="px-5">
+        <div class="container border-b border-black mt-20 pb-6 mx-auto xl:max-w-full mb-4">
+            <span class="font-extrabold text-sm mb-12 border border-black p-1">카</span>
+            <span class="font-extrabold text-sm mb-12 border-t border-r border-b border-black p-1 -mx-1">테</span>
+            <span class="font-extrabold text-sm mb-12 border-t border-r border-b border-black p-1 ">고</span>
+            <span class="font-extrabold text-sm mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
+        </div>
+        <div class="flex">
+            <div class="mr-20">
+                <ul>
+                    <a href="{% url "curriculums:lifestyle" %}">
+                        <li class="text-sm mb-2">라이프스타일</li>
+                    </a>
+                    <a href="{% url "curriculums:knowledge" %}">
+                        <li class="text-sm">지식</li>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <a href="{% url "curriculums:travel" %}">
+                        <li class="text-sm mb-2">여행</li>
+                    </a>
+                    <a href="{% url "curriculums:fiction" %}">
+                        <li class="text-sm">소설</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="container border-b border-black mt-10 pb-6 mx-auto xl:max-w-full mb-4">
+            <span class="font-extrabold text-sm mb-12 border border-black p-1">더</span>
+            <span class="font-extrabold text-sm mb-12 border-t border-r border-b border-black p-1 -mx-1">보</span>
+            <span class="font-extrabold text-sm mb-12 border-t border-r border-b border-black p-1 ">기</span>
+        </div>
+        <div class="flex mb-10">
+            <div class="mr-20">
+                <ul>
+                    <a href="https://www.instagram.com/baeksoo_seojum/">
+                        <li class="text-sm mb-2">인스타그램</li>
+                    </a>
+                    <a href="http://pf.kakao.com/_lxkJxkj">
+                        <li class="text-sm mb-2">문의</li>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <a href="{% url "curriculums:application" %}">
+                        <li class="text-sm mb-2">크리에이터 지원</li>
+                    </a>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

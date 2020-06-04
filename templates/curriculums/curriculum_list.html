@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    커리북 | 내게 맞는 책, 지금 필요한 독서
+{% endblock page_title %}
+
+{% block content %}
+    <div class="px-5">
+        <div class="container mt-24 pb-6 text-center mx-auto xl:max-w-full">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">오</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">늘</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 ">의</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">커</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1">리</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">큘</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1">럼</span>
+        </div>
+        <div class="border-b border-black -mx-5
+        ">
+        </div>
+    </div>
+    <div class="container mx-auto mt-10 max-w-full">
+        <div class="flex flex-col flex-wrap">
+            {% for banner in banner %}
+                {% include 'mixins/banner.html' with banner=banner %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="px-5">
+        <div class="container mx-auto max-w-full pb-6 mt-20 text-center">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">커</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 ">북</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">의</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1">추</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">천</span>
+        </div>
+        <div class="border-b border-black -mx-5
+        ">
+        </div>
+        <div class="container mx-auto max-w-full sm:max-w-full mt-10">
+            <div class="flex flex-col sm:flex-row flex-wrap">
+                {% for recommendation in recommendation %}
+                    {% include 'mixins/curriculum_card_3.html' with recommendation=recommendation %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="px-5">
+        <div class="container mx-auto lg:max-w-full pb-6 mt-20 text-center">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">신</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">규</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 ">커</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1">큘</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">럼</span>
+        </div>
+        <div class="border-b border-black -mx-5
+        ">
+        </div>
+        <div class="container mx-auto lg:max-w-full mt-10">
+            <div class="flex flex-col sm:flex-row flex-wrap">
+                {% for new in new %}
+                    {% include 'mixins/curriculum_card_5_new.html' with new=new %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="px-5">
+        <div class="container mx-auto lg:max-w-full pb-6 mt-20 text-center">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">인</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">기</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 ">커</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1">큘</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">럼</span>
+        </div>
+        <div class="border-b border-black -mx-5
+        ">
+        </div>
+        <div class="container mx-auto lg:max-w-full mt-10 mb-10">
+            <div class="flex flex-col sm:flex-row flex-wrap">
+                {% for popular in popular %}
+                    {% include 'mixins/curriculum_card_5_popular.html' with popular=popular %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

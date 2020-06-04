@@ -1,0 +1,375 @@
+{% load static %}
+{% load social_share %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128985957-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128985957-3');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128985957-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128985957-2');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="내게 맞는 책, 지금 필요한 독서를 찾아보세요">
+    <meta property="og:title" content="{{ curriculum.title }}"/>
+    <meta property="og:url" content=window.document.location.href>
+    <meta property="og:description" content="{{ curriculum.sub_title }}"/>
+    <meta property="og:image" content="{{ curriculum.cover_photo }}"/>
+    <meta name="naver-site-verification" content="4b463d3268f1862782b8084edfb94909eb820775"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Spectral:wght@200;300;400;500;600;700;800&family=Nunito:wght@200;300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+    <script>
+        function sharefacebook(url) {
+            window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+        }
+
+        function sharetwitter(url, text) {
+            window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url);
+        }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'RIDIBatang';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Spectral', 'RIDIBatang', serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        h4 {
+            font-size: 1.375em;
+        }
+
+        html.open {
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+            background-image: url("https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/bars.png");
+            background-size: 40%;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .close {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            background-image: url("https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/signs.png");
+            background-size: 40%;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        #menu {
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: -300px;
+            z-index: 10;
+            border: 1px solid #c9c9c9;
+            background-color: white;
+            text-align: center;
+            transition: All 0.3s ease-in-out;
+            -webkit-transition: All 0.3s ease-in-out;
+            -moz-transition: All 0.3s ease-in-out;
+            -o-transition: All 0.3s ease-in-out;
+        }
+
+        #menu.open {
+            left: 0px;
+        }
+
+        .page_cover.open {
+            display: block;
+        }
+
+        .page_cover {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 4;
+            display: none;
+            animation: fade 1.5s forwards;
+        }
+
+        @keyframes fade {
+            from {
+                background-color: rgba(0, 0, 0, 0);
+            }
+            to {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .logo {
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .search {
+            position: absolute;
+            top: 17px;
+            right: 0px;
+        }
+
+        header {
+            z-index: 9;
+        }
+
+        .slideshow {
+            border: 0.1em solid #cccccc;
+            width: 260px;
+            height: 100px;
+            right: 0px;
+            top: -120px;
+            position: absolute;
+            background-color: white;
+        }
+
+        .slideshow_open {
+            border: 0.1em solid #cccccc;
+            width: 260px;
+            height: 100px;
+            right: 16px;
+            top: 57px;
+            position: absolute;
+            background-color: white;
+            padding: 1rem;
+        }
+
+        .share_open {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+            background-image: url("https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/social-media.png");
+            background-size: 40%;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+    </style>
+    <title>
+        {% block page_title %}{% endblock page_title %}
+    </title>
+</head>
+
+<body class="text-gray-900">
+<header class="container inset-0 max-w-full px-5 py-2 h-14 fixed bg-white border-b border-gray-800">
+    <div class="flex items-center justify-center justify-between border-gray-700 py-1 text-sm">
+        <div class="btn xl:ml-8">
+        </div>
+        <div onclick="history.back();" class="page_cover"></div>
+        <div id="menu">
+            <div onclick="history.back();" class="close"></div>
+            <div class="container border-b border-black pb-6 mt-20 xl:max-w-full mb-4 text-left pl-5">
+                <span class="font-extrabold text-sm text-black mb-12 border border-black p-1">카</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">테</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 ">고</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
+
+            </div>
+            <div class="flex pl-5">
+                <div class="mr-16">
+                    <ul>
+                        <a href="{% url "curriculums:lifestyle" %}">
+                            <li class="text-sm text-black mb-2">라이프스타일</li>
+                        </a>
+                        <a href="{% url "curriculums:knowledge" %}">
+                            <li class="text-sm text-black">지식</li>
+                        </a>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <a href="{% url "curriculums:travel" %}">
+                            <li class="text-sm mb-2 text-black">여행</li>
+                        </a>
+                        <a href="{% url "curriculums:fiction" %}">
+                            <li class="text-sm text-black">소설</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="container border-b border-black mt-10 pb-6 mx-auto xl:max-w-full mb-4 text-left pl-5">
+                <span class="font-extrabold text-sm text-black mb-12 border border-black p-1">더</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">보</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 ">기</span>
+            </div>
+            <div class="flex mb-10 pl-5">
+                <div class="mr-16">
+                    <ul>
+                        <a href="https://www.instagram.com/baeksoo_seojum/">
+                            <li class="text-sm mb-2 text-black">인스타그램</li>
+                        </a>
+                        <a href="http://pf.kakao.com/_lxkJxkj">
+                            <li class="text-sm mb-2 text-black">문의</li>
+                        </a>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <a href="{% url "curriculums:application" %}">
+                            <li class="text-sm mb-2 text-black">크리에이터 지원</li>
+                        </a>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static "js/menu.js" %}"></script>
+        <div class="flex justify-center w-36 mx-auto absolute logo">
+            <a href="{% url "core:home" %}">
+                <img src="/static/img/curribook_Logo.png">
+            </a>
+        </div>
+        {% url 'curriculums:detail' curriculum.pk as the_url %}
+        {% if request.get_full_path == the_url %}
+            <div class="slideshow">
+                <div class="mb-4 text-xs text-gray-700">커리북의 커리큘럼을 SNS에 공유해보세요</div>
+                <div class="flex justify-center">
+                    <a href="javascript:sharefacebook(window.document.location.href)" class="mr-2"><img
+                            src='https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/facebook_logo.png'
+                            border='0' width="25px"></a>
+
+                    <a href="javascript:sharetwitter(window.document.location.href, '{{ curriculum.title }}')"
+                       class="mr-2"><img
+                            src='https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/twitter_logo.png'
+                            border='0' width="25px"></a>
+                    <a id="kakao-link-btn" href="javascript:sendLink()" class="mr-2">
+                        <img src='https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/kakao_logo.png'
+                             width="25px"
+                             border='0'>
+                    </a>
+                    <button id='btn1'><img
+                            src='https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/link.png'
+                            border='0' width="25px"></button>
+                </div>
+                <script type='text/javascript'>
+                    let sub_title = "{{ curriculum.sub_title }}";
+                    let title = "{{ curriculum.title }}";
+                    let image = "{{ curriculum.cover_photo }}";
+                    //<![CDATA[
+                    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+                    Kakao.init('4bfe326fb8b86006280cdd3e1cd7e1cf');
+                    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+                    Kakao.Link.createDefaultButton({
+                        container: '#kakao-link-btn',
+                        objectType: 'feed',
+                        content: {
+                            title: title,
+                            description: sub_title,
+                            imageUrl: image,
+                            link: {
+                                mobileWebUrl: window.document.location.href,
+                                webUrl: window.document.location.href
+                            }
+                        },
+                        buttons: [
+                            {
+                                title: '웹으로 보기',
+                                link: {
+                                    mobileWebUrl: window.document.location.href,
+                                    webUrl: window.document.location.href
+                                }
+                            },
+                        ]
+                    })
+                    ;
+                    //]]>
+                </script>
+
+
+                <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script>
+                    function copyToClipboard(val) {
+                        var t = document.createElement("textarea");
+                        document.body.appendChild(t);
+                        t.value = val;
+                        t.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(t);
+                    }
+
+                    $('#btn1').click(function () {
+                        copyToClipboard(document.location.href);
+                        alert('클립보드에 복사되었습니다');
+                    });
+                </script>
+            </div>
+            <div id="shareBtn" class="share_open mr-10 xl:mr-16"></div>
+            <script src="{% static "js/share.js" %}"></script>
+        {% endif %}
+        <a href="{% url 'curriculums:search' %}" class="search mr-4 xl:mr-8">
+            <i class="fas fa-search text-xl"></i>
+        </a>
+    </div>
+</header>
+
+{% block content %}{% endblock content %}
+{% include "partials/footer.html" %}
+</body>
+
+</html>

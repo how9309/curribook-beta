@@ -1,0 +1,19 @@
+<div class="w-1/4 mb-10 px-3">
+    <a href="{% url 'curriculums:detail' curriculum.pk %}">
+        <div class="w-full h-80 bg-cover bg-center mb-4 "
+             style="background-image: url({{ curriculum.cover_photo }});">
+        </div>
+        <div class="text-center">
+            <div class="inline-block text-sm text-gray-500 mb-8 border-b-2">
+                {{ curriculum.category }}
+            </div>
+        </div>
+
+        <div class="text-base font-bold mb-3 text-center">
+            {{ curriculum.title }}
+        </div>
+        <div class="text-sm font-normal text-gray-700 mb-4 text-center">
+            {{ curriculum.sub_title }}
+        </div>
+    </a>
+</div>
