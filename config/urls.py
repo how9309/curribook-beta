@@ -22,6 +22,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("curriculums/", include("curriculums.urls", namespace="curriculums")),
+    path("users/", include("users.urls", namespace="users")),
+    path("book_clubs/", include("book_clubs.urls", namespace="book_clubs")),
     path("admin/", admin.site.urls),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path('robots.txt/', TemplateView.as_view(template_name="robots.txt",

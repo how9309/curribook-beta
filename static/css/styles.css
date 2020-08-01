@@ -194,19 +194,19 @@ hr {
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color: #a0aec0
+    color: #CCCCCC
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-    color: #a0aec0
+    color: #CCCCCC
 }
 
 input:-ms-input-placeholder, input::-ms-input-placeholder, textarea:-ms-input-placeholder, textarea::-ms-input-placeholder {
-    color: #a0aec0
+    color: #CCCCCC
 }
 
 input::placeholder, textarea::placeholder {
-    color: #a0aec0
+    color: #CCCCCC
 }
 
 [role=button], button {
@@ -299,8 +299,6 @@ img, video {
 }
 
 .btn-link, input, select, textarea {
-    font-weight: 300;
-    font-size: 1.125rem;
     width: 100%
 }
 
@@ -316,9 +314,8 @@ img, video {
 input, select, textarea {
     border-radius: .125rem;
     text-align: left;
-    border-width: 1px;
+    border-width: 0px;
     border-color: #718096;
-    padding: 1.25rem
 }
 
 input:focus, select:focus, textarea:focus {

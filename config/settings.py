@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "&9nk^8d(m5tgw!o!2nodj4uu*+%n=(788i&hsq6i07b44&^@1w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -41,6 +41,8 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     "curriculums.apps.CurriculumsConfig",
     "core.apps.CoreConfig",
+    "users.apps.UsersConfig",
+    "book_clubs.apps.BookClubsConfig",
 ]
 
 THIRD_PARTY_APPS = [
@@ -102,9 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 # Internationalization
@@ -156,3 +158,23 @@ EMAIL_PORT = "587"
 EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
 EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
 EMAIL_FROM = "curribook@sandbox11409955eeae4b569caac802b1788c13.mailgun.org"
+
+AUTH_USER_MODEL = "users.User"
+
+# Auth
+
+LOGIN_URL = "/users/login/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'width': '100%',
+        'resize_dir': 'both',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+             'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+        ]
+    }
+}

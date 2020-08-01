@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ user_obj.name }}'s Profile
+{% endblock page_title %}
+
+{% block content %}
+
+    <div class="min-h-50vh mt-24">
+        <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+            <div class="flex items-center">
+                <span class="text-3xl mt-1">{{ user_obj.name }}</span>
+            </div>
+            <span class="text-lg mb-5">({{ user.nickname }})</span>
+            {% if user == user_obj %}
+                <a href="{% url 'users:update' %}" class="btn-link bg-gray-900">프로필 수정하기</a>
+            {% endif %}
+        </div>
+        {% if user_obj.bookreviews.count > 0 %}
+            <h3 class="mb-12 text-2xl text-center">{{ user_obj.name }}'s 서평</h3>
+            <div class="container mx-auto pb-10 ">
+                <div class="flex flex-wrap mb-10">
+                    {% for bookreview in user_obj.bookreviews.all %}
+                        {% include 'mixins/bookReview_card_user.html' with bookreview=bookreview %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

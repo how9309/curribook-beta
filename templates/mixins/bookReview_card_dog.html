@@ -1,0 +1,23 @@
+<div class="mx-auto mb-10 px-3 py-5 w-11/12 shadow-md ">
+    <a href="{% url 'book_clubs:detail' dog.pk %}">
+        <div class="text-base font-bold mb-3">
+            {{ dog.title | truncatechars:24 }}
+        </div>
+        <div class="text-sm font-light mb-3">
+            {{ dog.description | truncatechars:52 }}
+        </div>
+        <div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                {{ dog.category_BookReview }}
+            </div>
+        </div>
+        <div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                {{ dog.created | date:"Y.m.d" }}
+            </div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                by {{ dog.author.name }}
+            </div>
+        </div>
+    </a>
+</div>

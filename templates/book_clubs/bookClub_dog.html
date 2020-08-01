@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    커리북 | 내게 맞는 책, 지금 필요한 독서
+{% endblock page_title %}
+
+{% block content %}
+    <div class="px-5">
+        <div class="container mx-auto max-w-full pb-6 mt-20 text-center">
+            <span class="font-extrabold text-lg mb-12 border border-black p-1">서</span>
+            <span class="font-extrabold text-lg mb-12 border-t border-r border-b border-black p-1 -mx-1">평</span>
+        </div>
+        <div class="border-b border-black -mx-5"></div>
+        <div class="container mx-auto max-w-full sm:max-w-full mt-10">
+            <div class="flex-col sm:flex-row flex-wrap">
+                {% for dog in dogs %}
+                    {% include 'mixins/bookReview_card_dog.html' with dog=dog %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

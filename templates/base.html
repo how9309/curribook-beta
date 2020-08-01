@@ -48,6 +48,7 @@
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/balloon/ckeditor.js"></script>
 
 
     <script>
@@ -58,6 +59,13 @@
         function sharetwitter(url, text) {
             window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url);
         }
+    </script>
+    <script>
+        BalloonEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 
     <style>
@@ -216,6 +224,7 @@
 </head>
 
 <body class="text-gray-900">
+{% include "partials/messages.html" %}
 <header class="container inset-0 max-w-full px-5 py-2 h-14 fixed bg-white border-b border-gray-800">
     <div class="flex items-center justify-center justify-between border-gray-700 py-1 text-sm">
         <div class="btn xl:ml-8">
@@ -223,12 +232,36 @@
         <div onclick="history.back();" class="page_cover"></div>
         <div id="menu">
             <div onclick="history.back();" class="close"></div>
-            <div class="container border-b border-black pb-6 mt-20 xl:max-w-full mb-4 text-left pl-5">
+            <div class="container mt-16">
+                <div class="container w-1/2 ml-5 mb-8">
+                    <a href="{% url "core:home" %}">
+                        <img src="https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/curribook_Logo.png">
+                    </a>
+                </div>
+                <div class="flex ml-5">
+                    {% if user.is_authenticated %}
+                        <a href="{{ user.get_absolute_url }}">
+                            <div class="font-bold text-lg">
+                                {{ user.name }}
+                            </div>
+                        </a>
+
+                    {% else %}
+                        <div class="flex mb-6">
+                            <div><a href="{% url "users:login" %}"
+                                    class="border border-black px-4 py-2 text-base mr-3">로그인</a></div>
+                            <div><a href="{% url "users:signup" %}"
+                                    class="border border-black px-4 py-2 text-base text-white bg-gray-800">회원가입</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container border-b border-black pb-6 mt-10 xl:max-w-full mb-4 text-left pl-5">
                 <span class="font-extrabold text-sm text-black mb-12 border border-black p-1">카</span>
                 <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">테</span>
                 <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 ">고</span>
                 <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">리</span>
-
             </div>
             <div class="flex pl-5">
                 <div class="mr-16">
@@ -248,6 +281,28 @@
                         </a>
                         <a href="{% url "curriculums:fiction" %}">
                             <li class="text-sm text-black">소설</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="container border-b border-black mt-10 pb-6 mx-auto xl:max-w-full mb-4 text-left pl-5">
+                <span class="font-extrabold text-sm text-black mb-12 border border-black p-1">독</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">서</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 ">모</span>
+                <span class="font-extrabold text-sm text-black mb-12 border-t border-r border-b border-black p-1 -mx-1">임</span>
+            </div>
+            <div class="flex pl-5">
+                <div class="mr-16">
+                    <ul>
+                        <a href="{% url "book_clubs:home" %}">
+                            <li class="text-sm text-black mb-2">진행중</li>
+                        </a>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <a href="{% url "book_clubs:create" %}">
+                            <li class="text-sm mb-2 text-black">서평쓰기</li>
                         </a>
                     </ul>
                 </div>
@@ -277,12 +332,22 @@
                     </ul>
                 </div>
             </div>
+            <div class="container text-left ml-5">
+                {% if user.is_authenticated %}
+                    <div><a href="{% url "users:logout" %}"
+                            class="text-xs text-left">로그아웃</a>
+                    </div>
+                {% else %}
+                {% endif %}
+            </div>
         </div>
+
+
         <script src="{% static 'js/owl.carousel.min.js' %}"></script>
         <script src="{% static "js/menu.js" %}"></script>
         <div class="flex justify-center w-36 mx-auto absolute logo">
             <a href="{% url "core:home" %}">
-                <img src="/static/img/curribook_Logo.png">
+                <img src="https://curribook-static.s3.ap-northeast-2.amazonaws.com/static/img/curribook_Logo.png">
             </a>
         </div>
         {% url 'curriculums:detail' curriculum.pk as the_url %}

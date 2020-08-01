@@ -1,0 +1,23 @@
+<div class="mx-auto mb-10 px-3 py-5 w-11/12 shadow-md ">
+    <a href="{% url 'book_clubs:detail' BookReviews.pk %}">
+        <div class="text-base font-bold mb-3">
+            {{ BookReviews.title | truncatechars:24 }}
+        </div>
+        <div class="text-sm font-light mb-3">
+            {{ BookReviews.description | truncatechars:52 }}
+        </div>
+        <div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                {{ BookReviews.category_BookReview }}
+            </div>
+        </div>
+        <div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                {{ BookReviews.created | date:"Y.m.d" }}
+            </div>
+            <div class="inline-block text-xs text-gray-500 font-normal">
+                by {{ BookReviews.author.name }}
+            </div>
+        </div>
+    </a>
+</div>

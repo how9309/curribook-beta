@@ -1,0 +1,55 @@
+<form method="POST" class="w-full" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <span class="text-red-700 font-medium text-sm">{{ error }}</span>
+        {% endfor %}
+    {% endif %}
+
+    <div class="mb-4 w-full text-4xl {% if form.errors %}has_error{% endif %}">
+        {{ form.title }}
+        {{ form.media }}
+        {% if form.errors %}
+            {% for error in form.errors %}
+                <span class="text-red-700 font-medium text-sm">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="mb-2 w-full font-light {% if form.errors %}has_error{% endif %}">
+        {{ form.sub_title }}
+        {{ form.media }}
+        {% if form.errors %}
+            {% for error in form.errors %}
+                <span class="text-red-700 font-medium text-sm">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="mb-2 w-full {% if form.errors %}has_error{% endif %}">
+        {{ form.category_BookReview }}
+        {{ form.media }}
+        {% if form.errors %}
+            {% for error in form.errors %}
+                <span class="text-red-700 font-medium text-sm">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="mb-2 w-full h-50vh {% if form.errors %}has_error{% endif %}">
+        {{ form.description }}
+        {% if form.errors %}
+            {% for error in form.errors %}
+                <span class="text-red-700 font-medium text-sm">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <script>
+        BalloonEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <button class="bg-gray-900 text-white text-center rounded-sm py-5 font-light text-lg w-full">{{ cta }}</button>
+</form>
