@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ef3cbbcabc5bfa46dd0281c6c5a7d9a72f6b7adc1967e8226c3b259af212cae4"
+            "sha256": "8c5ea5d7359d025a0954b2ade9f1fe71dbfd642ec00a1b8f349535410963e2d8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -72,6 +72,14 @@
             "index": "pypi",
             "version": "==5.9.0"
         },
+        "django-ckeditor-5": {
+            "hashes": [
+                "sha256:145a876cb7bb3778928e74e3cb3d7b9650027749478bea7070cdff4d5f0c022e",
+                "sha256:76983de3c2654c943ae4f56177b5c9e2f095da8de98d6593d809002d14b1d520"
+            ],
+            "index": "pypi",
+            "version": "==0.0.12"
+        },
         "django-dotenv": {
             "hashes": [
                 "sha256:3812bb0f4876cf31f902aad140f0645e120e51ee30eb7c40c22050f58a0e4adb",
@@ -103,6 +111,13 @@
             ],
             "index": "pypi",
             "version": "==1.9.1"
+        },
+        "django-summernote": {
+            "hashes": [
+                "sha256:c23dae35c287f0d3d1ff801654ace77c3c6836453162e87c7330710d74d2eb88"
+            ],
+            "index": "pypi",
+            "version": "==0.8.11.6"
         },
         "docutils": {
             "hashes": [

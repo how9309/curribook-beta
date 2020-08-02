@@ -1,10 +1,10 @@
-<div class="mx-auto mb-10 px-3 py-5 w-11/12 shadow-md ">
+<div class="mx-auto mb-10 px-3 py-5 w-11/12 lg:w-8/12 shadow-md ">
     <a href="{% url 'book_clubs:detail' BookReviews.pk %}">
         <div class="text-base font-bold mb-3">
             {{ BookReviews.title | truncatechars:24 }}
         </div>
         <div class="text-sm font-light mb-3">
-            {{ BookReviews.description | truncatechars:52 }}
+            {{ BookReviews.description | safe | truncatechars:52 }}
         </div>
         <div>
             <div class="inline-block text-xs text-gray-500 font-normal">

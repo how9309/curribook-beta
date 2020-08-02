@@ -50,6 +50,8 @@ THIRD_PARTY_APPS = [
     "ckeditor_uploader",
     "storages",
     "django_social_share",
+    'django_ckeditor_5',
+    'django_summernote',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -151,6 +153,8 @@ if not DEBUG:
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES["default"].update(db_from_env)
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # Email Configuration
 
 EMAIL_HOST = "smtp.mailgun.org"
@@ -164,17 +168,3 @@ AUTH_USER_MODEL = "users.User"
 # Auth
 
 LOGIN_URL = "/users/login/"
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'width': '100%',
-        'resize_dir': 'both',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
-             'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-        ]
-    }
-}

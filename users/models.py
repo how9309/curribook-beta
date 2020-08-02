@@ -15,8 +15,8 @@ class User(AbstractUser):
     GENDER_FEMALE = "female"
 
     GENDER_CHOICES = (
-        (GENDER_MALE, "Male"),
-        (GENDER_FEMALE, "Female"),
+        (GENDER_MALE, "남자"),
+        (GENDER_FEMALE, "여자"),
     )
 
     name = models.CharField(max_length=10, null=True, blank=True)
